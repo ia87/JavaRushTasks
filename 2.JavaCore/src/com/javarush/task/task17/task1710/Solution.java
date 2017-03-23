@@ -67,7 +67,9 @@ public class Solution {
                         name = person.getName();
                         sex = person.getSex().equals(Sex.MALE) ? "м" : "ж";
                         bd = person.getBirthDay();
+
                         System.out.println(name + " " + sex + dateFormat.format(bd));
+
                     }
 
             }
