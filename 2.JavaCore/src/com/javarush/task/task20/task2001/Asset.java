@@ -56,6 +56,7 @@ public class Asset {
     public void load(InputStream inputStream) throws Exception
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        System.out.println(reader.ready());
         name = reader.readLine();
         price = Integer.parseInt(reader.readLine());
 //        reader.close();

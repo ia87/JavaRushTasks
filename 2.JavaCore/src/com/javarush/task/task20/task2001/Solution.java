@@ -13,7 +13,7 @@ public class Solution {
         //исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
 
-            File your_file_name = File.createTempFile("your_file_name", null);
+            File your_file_name = File.createTempFile("save_", "txt", new File("d:\\"));
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
@@ -77,19 +77,23 @@ public class Solution {
             //implement this method - реализуйте этот метод
             PrintWriter writer = new PrintWriter(outputStream);
 
-            if (name != null) writer.print(name);
+//            if (name != null) writer.println(name);
 
             String isNamePresent = name != null ? "yes" : "no";
-            writer.print(isNamePresent);
+            writer.println(isNamePresent);
 
-            if (name!=null || !name.isEmpty()) writer.print(name);
+            if (name!=null || !name.isEmpty()) writer.println(name);
+
+            writer.flush();
 
             if (!assets.isEmpty()) {
-                writer.print(assets.size());
+                writer.println(assets.size());
+                writer.flush();
                 for (Asset as : assets) {
                     as.save(outputStream);
                 }
-            } else writer.print(0);
+            } else writer.println(0);
+
         }
 
         public void load(InputStream inputStream) throws Exception {
