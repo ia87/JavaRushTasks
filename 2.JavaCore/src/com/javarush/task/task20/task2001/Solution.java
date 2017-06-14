@@ -13,9 +13,10 @@ public class Solution {
         //исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
 
-            File your_file_name = File.createTempFile("save_", "txt", new File("d:\\"));
+            File your_file_name = File.createTempFile("save_", ".txt", new File("d:\\"));
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
+
 
             Human ivanov = new Human("Ivanov", new Asset("home"), new Asset("car"));
             ivanov.save(outputStream);
@@ -31,7 +32,7 @@ public class Solution {
             inputStream.close();
 
         } catch (IOException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             System.out.println("Oops, something wrong with my file");
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,18 +100,30 @@ public class Solution {
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            int assetsSize;
+            int assetsSize=0;
             Asset asset;
-
+//
             String isNamePresent = reader.readLine();
-            if ("yes".equals(isNamePresent)) name = reader.readLine();
 
-            assetsSize = Integer.parseInt(reader.readLine());
-            for (int i = 0; i < assetsSize; i++) {
-                asset = new Asset("some asset " + i);
-                asset.load(inputStream);
-                assets.add(asset);
-            }
+            BufferedReader freader = new BufferedReader(new InputStreamReader(inputStream));
+            System.out.println(freader.ready());
+
+
+//            if ("yes".equals(isNamePresent)) name = reader.readLine();
+//
+//            assetsSize = Integer.parseInt(reader.readLine());
+//
+//
+//            for (int i = 0; i < assetsSize; i++) {
+//                asset = new Asset("some asset " + i);
+//                asset.load(inputStream);
+//                assets.add(asset);
+//            }
+
+          asset = new Asset("123");
+          asset.load(inputStream);
+
+
         }
     }
 }
