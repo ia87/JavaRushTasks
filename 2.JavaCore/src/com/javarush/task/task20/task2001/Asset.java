@@ -50,18 +50,15 @@ public class Asset {
         printWriter.println(name);
         printWriter.println(price);
         printWriter.flush();
-//        printWriter.close();
     }
 
-    public void load(InputStream inputStream) throws Exception
+//    public void load(InputStream inputStream) throws Exception
+    public void load(BufferedReader bufferedReader) throws Exception
     {
-        BufferedReader fileReader = new BufferedReader(new InputStreamReader(inputStream));
-        System.out.println(fileReader.ready());
-
+        BufferedReader fileReader = bufferedReader;
         name = fileReader.readLine();
-        System.out.println(name);
-        price = Integer.parseInt(fileReader.readLine());
-        System.out.println(price);
-//        reader.close();
+//        System.out.println(name);
+        price = Double.parseDouble(fileReader.readLine());
+//        System.out.println(price);
     }
 }

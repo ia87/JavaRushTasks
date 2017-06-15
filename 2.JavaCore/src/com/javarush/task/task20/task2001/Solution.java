@@ -18,7 +18,8 @@ public class Solution {
             InputStream inputStream = new FileInputStream(your_file_name);
 
 
-            Human ivanov = new Human("Ivanov", new Asset("home"), new Asset("car"));
+//            Human ivanov = new Human("Ivanov", new Asset("home"), new Asset("car"));
+            Human ivanov = new Human("Ivanov", null);
             ivanov.save(outputStream);
             outputStream.flush();
 
@@ -27,7 +28,7 @@ public class Solution {
             Human somePerson = new Human();
             somePerson.load(inputStream);
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
-            System.out.println(somePerson.equals(ivanov));
+            System.out.println("Ivanov equals to somePerson: " + somePerson.equals(ivanov));
 
             inputStream.close();
 
@@ -87,7 +88,7 @@ public class Solution {
 
             writer.flush();
 
-            if (!assets.isEmpty()) {
+            if (!assets.isEmpty() || assets!=null) {
                 writer.println(assets.size());
                 writer.flush();
                 for (Asset as : assets) {
@@ -102,26 +103,20 @@ public class Solution {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             int assetsSize=0;
             Asset asset;
-//
+
             String isNamePresent = reader.readLine();
 
-            BufferedReader freader = new BufferedReader(new InputStreamReader(inputStream));
-            System.out.println(freader.ready());
+            if ("yes".equals(isNamePresent)) name = reader.readLine();
+
+            assetsSize = Integer.parseInt(reader.readLine());
 
 
-//            if ("yes".equals(isNamePresent)) name = reader.readLine();
-//
-//            assetsSize = Integer.parseInt(reader.readLine());
-//
-//
-//            for (int i = 0; i < assetsSize; i++) {
-//                asset = new Asset("some asset " + i);
-//                asset.load(inputStream);
-//                assets.add(asset);
-//            }
+            for (int i = 0; i < assetsSize; i++) {
+                asset = new Asset("some asset " + i);
+                asset.load(reader);
+                assets.add(asset);
+            }
 
-          asset = new Asset("123");
-          asset.load(inputStream);
 
 
         }
