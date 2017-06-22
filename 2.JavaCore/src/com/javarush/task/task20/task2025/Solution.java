@@ -13,28 +13,34 @@ public class Solution {
         public static long fillExpTime=0;
         public static long getDigitsTime=0;
         public static long getNumbersTime=0;
+        public static int counter;
 
     public static long[] getNumbers(long N) {
-        long t0 = System.currentTimeMillis();
+        long t0=0,t1=0;
         long[] result = null;
         ArrayList<Long> list = new ArrayList();
 
         fillExp();
+        t0 = System.currentTimeMillis();
 
         label:
         for (long l = 288; l < N; l++) {
             int[] digits = getDigits(l, true);
             if (digits == null) continue label;
-
+            counter++;
             long sum1= getSum(digits);
 
             digits = getDigits(sum1, false);
             long sum2= getSum(digits);
 
+
             if (sum1 == sum2) {
                 list.add(sum1);
 //                System.out.println(System.currentTimeMillis()-t0 + "------");
             }
+            t1 = System.currentTimeMillis();
+            getNumbersTime+=t1-t0;
+            t0=t1;
         }
 
 
@@ -43,8 +49,6 @@ public class Solution {
             result[i] = list.get(i);
         }
 
-        long t1 = System.currentTimeMillis();
-        getNumbersTime+=t1-t0;
 
         return result;
     }
@@ -95,7 +99,7 @@ public class Solution {
 
     public static void main(String[] args) {
         long t0 = System.currentTimeMillis();
-        long[] nums = getNumbers(99999999);
+        long[] nums = getNumbers(9999999);
         long t1 = System.currentTimeMillis();
         System.out.println("total time, s: " + (t1-t0) / 1000d);
         System.out.println("memory: " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024) + " mb");
@@ -103,10 +107,11 @@ public class Solution {
         System.out.println(getSumTime/ 1000d);
         System.out.println(fillExpTime/ 1000d);
         System.out.println(getNumbersTime/ 1000d);
+        System.out.println("Counter= "+counter);
 
-        for (long l : nums) {
-            System.out.println(l);
-        }
+//        for (long l : nums) {
+//            System.out.println(l);
+//        }
 
     }
 }
