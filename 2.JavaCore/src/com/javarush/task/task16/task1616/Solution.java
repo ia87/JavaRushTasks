@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 */
 
 public class Solution {
-    public static void main(String[] args) throws IOException {
+    public static void main(com.javarush.task.task20.task2010.Solution.String[] args) throws IOException {
         InputStreamReader in = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(in);
         //create and run thread
