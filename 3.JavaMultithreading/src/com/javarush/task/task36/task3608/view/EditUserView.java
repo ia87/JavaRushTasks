@@ -17,6 +17,8 @@ public class EditUserView implements View {
         System.out.println("===================================================");
     }
 
+    public void fireEventUserDeleted(long id){if(controller!=null) controller.onUserDelete(id);}
+    public void fireEventUserChanged(String name, long id, int level) {if(controller!=null) controller.onUserChange(name, id, level);}
 
 
     @Override
