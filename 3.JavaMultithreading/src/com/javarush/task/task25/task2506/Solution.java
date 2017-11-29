@@ -16,21 +16,4 @@ public class Solution {
         target.interrupt(); //TERMINATED
         Thread.sleep(500);
     }
-
-    private static class LoggingStateThread extends Thread{
-        private Thread thread;
-        public LoggingStateThread(Thread t) {
-            this.thread = t;
-            setDaemon(true);
-//            System.out.println(thread.getState());
-        }
-
-        @Override
-        public void run() {
-//            super.run();
-            while (true){
-                System.out.println(thread.getState());
-            }
-        }
-    }
 }
